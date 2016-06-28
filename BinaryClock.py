@@ -11,63 +11,65 @@ GPIO.setup(5,GPIO.OUT)
 GPIO.setup(19,GPIO.OUT)
 GPIO.setup(21,GPIO.OUT)
 
-hourStr = time.strftime("%I")
-minuteStr = time.strftime("%M")
+while True:
+    hourStr = time.strftime("%I")
+    minuteStr = time.strftime("%M")
 
-hourInt = int(float(hourStr))
-minuteInt = int(float(minuteStr))
+    hourInt = int(float(hourStr))
+    minuteInt = int(float(minuteStr))
 
-hourBin = "{0:b}".format(hourInt)
-minuteBin = "{0:b}".format(minuteInt)
+    hourBin = "{0:b}".format(hourInt)
+    minuteBin = "{0:b}".format(minuteInt)
 
-hourArray = []
-minuteArray = []
+    hourArray = []
+    minuteArray = []
 
-for hour in hourBin:
-  hourArray.append(hour)
+    for hour in hourBin:
+    hourArray.append(hour)
 
-for minute in minuteBin:
-  minuteArray.append(minute)
+    for minute in minuteBin:
+    minuteArray.append(minute)
 
-hourArray.reverse()
-minuteArray.reverse()
+    hourArray.reverse()
+    minuteArray.reverse()
 
-extra = 6 - len(hourArray)
+    extra = 6 - len(hourArray)
 
-for num in range(0,extra):
-  hourArray.append("0")
+    for num in range(0,extra):
+    hourArray.append("0")
 
-extra = 7 - len(minuteArray)
+    extra = 7 - len(minuteArray)
 
-for num in range(0,extra):
-  minuteArray.append("0")
+    for num in range(0,extra):
+    minuteArray.append("0")
 
-outputsArray = [2, 18, 23, 25, 5, 19]
+    outputsArray = [2, 18, 23, 25, 5, 19]
 
-for out in range(0,len(hourArray)):
-  if int(hourArray[out]) == 1:
+    for out in range(0,len(hourArray)):
+    if int(hourArray[out]) == 1:
     GPIO.output(outputsArray[out],GPIO.HIGH)
-  else:
+    else:
     GPIO.output(outputsArray[out],GPIO.LOW)
 
-time.sleep(4)
+    time.sleep(4)
 
-for out in range(0,len(hourArray)):
-  GPIO.output(outputsArray[out],GPIO.LOW)
-
-time.sleep(2)
-
-outputsArray = [2, 18, 23, 25, 5, 19, 21]
-
-for out in range(0,len(minuteArray)):
-  if int(minuteArray[out]) == 1:
-    GPIO.output(outputsArray[out],GPIO.HIGH)
-  else:
+    for out in range(0,len(hourArray)):
     GPIO.output(outputsArray[out],GPIO.LOW)
 
-time.sleep(4)
+    time.sleep(2)
 
-for out in range(0,len(hourArray)):
-  GPIO.output(outputsArray[out],GPIO.LOW)
+    outputsArray = [2, 18, 23, 25, 5, 19, 21]
 
-time.sleep(2)
+    for out in range(0,len(minuteArray)):
+    if int(minuteArray[out]) == 1:
+    GPIO.output(outputsArray[out],GPIO.HIGH)
+    else:
+    GPIO.output(outputsArray[out],GPIO.LOW)
+
+    time.sleep(4)
+
+    for out in range(0,len(hourArray)):
+    GPIO.output(outputsArray[out],GPIO.LOW)
+
+    time.sleep(2)
+
