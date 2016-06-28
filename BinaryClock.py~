@@ -20,11 +20,31 @@ minuteInt = int(float(minuteStr))
 hourBin = "{0:b}".format(hourInt)
 minuteBin = "{0:b}".format(minuteInt)
 
-print(hourInt)
-print(minuteInt)
+hourArray = []
+minuteArray = []
 
-print(hourBin)
-print(minuteBin)
+for hour in hourBin:
+  hourArray.append(hour)
 
-for digit in hourBin:
-  print(digit)
+for minute in minuteBin:
+  minuteArray.append(minute)
+
+hourArray.reverse()
+minuteArray.reverse()
+
+extra = 6 - len(hourArray)
+
+for num in range(0,extra):
+  hourArray.append("0")
+
+extra = 7 - len(minuteArray)
+
+for num in range(0,extra):
+  minuteArray.append("0")
+
+outputsArray = [2, 18, 23, 25, 5, 19]
+
+print(int(hourArray[out]))  
+
+for out in len(hourArray)
+  if hourArray[out]

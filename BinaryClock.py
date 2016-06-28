@@ -41,3 +41,33 @@ extra = 7 - len(minuteArray)
 
 for num in range(0,extra):
   minuteArray.append("0")
+
+outputsArray = [2, 18, 23, 25, 5, 19]
+
+for out in range(0,len(hourArray)):
+  if int(hourArray[out]) == 1:
+    GPIO.output(outputsArray[out],GPIO.HIGH)
+  else:
+    GPIO.output(outputsArray[out],GPIO.LOW)
+
+time.sleep(4)
+
+for out in range(0,len(hourArray)):
+  GPIO.output(outputsArray[out],GPIO.LOW)
+
+time.sleep(2)
+
+outputsArray = [2, 18, 23, 25, 5, 19, 21]
+
+for out in range(0,len(minuteArray)):
+  if int(minuteArray[out]) == 1:
+    GPIO.output(outputsArray[out],GPIO.HIGH)
+  else:
+    GPIO.output(outputsArray[out],GPIO.LOW)
+
+time.sleep(4)
+
+for out in range(0,len(hourArray)):
+  GPIO.output(outputsArray[out],GPIO.LOW)
+
+time.sleep(2)
